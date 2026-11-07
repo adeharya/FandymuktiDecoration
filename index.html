@@ -4,73 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fandy Mukty Decoration | Wedding Planner & Dekorasi</title>
+    <!--[span_0](start_span)[span_0](end_span) -->
     <meta name="description" content="Layanan spesialis dekorasi pernikahan dan wedding planner elegan.">
+    <!--[span_1](start_span)[span_1](end_span) -->
     
-    <!-- Pra-muat Font Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <!--[span_2](start_span)[span_2](end_span) -->
     
     <link rel="stylesheet" href="style.css">
+    <!--[span_3](start_span)[span_3](end_span) -->
 </head>
 <body>
 
-    <!-- Navigasi -->
     <nav class="navbar">
         <div class="container nav-wrapper">
-            <!-- Menggunakan logo versi terang[span_2](start_span)[span_2](end_span) -->
             <img src="1000038108.jpg" alt="Fandy Mukty Dekorasi Logo" class="brand-logo">
+            <!--[span_4](start_span)[span_4](end_span) -->
             <ul class="nav-links">
                 <li><a href="#beranda">Beranda</a></li>
-                <li><a href="#layanan">Layanan</a></li>
+                <!--[span_5](start_span)[span_5](end_span) -->
+                <li><a href="#katalog">Katalog Paket</a></li>
                 <li><a href="#portofolio">Portofolio</a></li>
+                <!--[span_6](start_span)[span_6](end_span) -->
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section (Mobile-Optimized) -->
+    <!-- Hero Section Diadaptasi dari Referensi -->
     <header id="beranda" class="hero-section">
         <div class="container hero-content">
             <h1>Wujudkan Pernikahan<br><span>Impian Anda</span></h1>
+            <!--[span_7](start_span)[span_7](end_span) -->
             <p>Spesialis dekorasi pelaminan elegan dan perencanaan pernikahan terpadu yang dirancang khusus untuk momen bahagia Anda.</p>
-            <a href="#layanan" class="btn-primary">Lihat Paket Kami</a>
+            <!--[span_8](start_span)[span_8](end_span) -->
+            
+            <div class="hero-badges">
+                <span>Desain Eksklusif</span>
+                <span>Promo Bundling</span>
+                <span>Bebas Konsultasi</span>
+            </div>
+
+            <a href="#katalog" class="btn-primary">Lihat Katalog Kami</a>
         </div>
     </header>
 
-    <!-- Layanan / Paket Section -->
-    <section id="layanan" class="services-section">
+    <!-- Section USP (Unique Selling Proposition) -->
+    <section class="usp-section">
+        <div class="container usp-grid">
+            <div class="usp-item">
+                <div class="usp-icon">⏱️</div>
+                <h3>Pemasangan Tepat Waktu</h3>
+            </div>
+            <div class="usp-item">
+                <div class="usp-icon">🛡️</div>
+                <h3>Garansi Hari-H</h3>
+            </div>
+            <div class="usp-item">
+                <div class="usp-icon">✨</div>
+                <h3>Material Premium</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog Paket (Tab & Grid System) -->
+    <section id="katalog" class="services-section">
         <div class="container">
-            <h2 class="section-title">Layanan Kami</h2>
-            <div class="grid-services">
-                <div class="service-card">
-                    <h3>Dekorasi Pelaminan</h3>
-                    <p>Desain eksklusif dengan bunga segar, pencahayaan romantis, dan tata letak elegan.</p>
+            <div class="section-header">
+                <h3>Pilihan</h3>
+                <h2 class="section-title">Paket Layanan</h2>
+            </div>
+            
+            <!-- Tab Navigasi -->
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="filterSelection('all')">Semua Layanan</button>
+                <button class="tab-btn" onclick="filterSelection('dekorasi')">Paket Dekorasi</button>
+                <button class="tab-btn" onclick="filterSelection('tenda')">Tenda & Alat</button>
+            </div>
+
+            <!-- Grid Katalog Produk -->
+            <div class="grid-catalog">
+                <!-- Card 1 -->
+                <div class="catalog-card filter-item dekorasi">
+                    <div class="card-badge">Disc. 20%</div>
+                    <div class="card-img" style="background-image: url('placeholder-dekor-1.jpg');"></div>
+                    <div class="card-body">
+                        <h3>Dekorasi Pelaminan Eksklusif</h3>
+                        <div class="card-price">
+                            <del>Rp. 15.000.000</del>
+                            <strong>Rp. 12.000.000</strong>
+                        </div>
+                        <a href="https://wa.me/6289530104144" class="btn-outline">Lihat Detail</a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Wedding Planner</h3>
-                    <p>Manajemen acara menyeluruh dari persiapan hingga hari H agar Anda bisa fokus menikmati momen.</p>
+
+                <!-- Card 2 -->
+                <div class="catalog-card filter-item dekorasi">
+                    <div class="card-badge">Hot Promo</div>
+                    <div class="card-img" style="background-image: url('placeholder-dekor-2.jpg');"></div>
+                    <div class="card-body">
+                        <h3>Paket Minimalist Luxury</h3>
+                        <div class="card-price">
+                            <del>Rp. 10.000.000</del>
+                            <strong>Rp. 8.500.000</strong>
+                        </div>
+                        <a href="https://wa.me/6289530104144" class="btn-outline">Lihat Detail</a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Tenda & Alat Pesta</h3>
-                    <p>Penyediaan tenda VIP, kursi, meja, dan pendingin ruangan dengan standar kualitas premium.</p>
+
+                <!-- Card 3 -->
+                <div class="catalog-card filter-item tenda">
+                    <div class="card-img" style="background-image: url('placeholder-tenda-1.jpg');"></div>
+                    <div class="card-body">
+                        <h3>Set Tenda VIP & Alat Pesta</h3>
+                        <div class="card-price">
+                            <p>Mulai dari</p>
+                            <strong>Rp. 5.000.000</strong>
+                        </div>
+                        <a href="https://wa.me/6289530104144" class="btn-outline">Lihat Detail</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Area (Dark Theme) -->
     <footer class="footer-section">
         <div class="container footer-content">
-            <!-- Menggunakan logo versi gelap[span_3](start_span)[span_3](end_span) -->
             <img src="1000038102.jpg" alt="Fandy Mukty Decoration Footer" class="footer-logo">
+            <!--[span_9](start_span)[span_9](end_span) -->
             <p>&copy; 2026 Fandy Mukty Decoration. Seluruh Hak Cipta Dilindungi.</p>
+            <!--[span_10](start_span)[span_10](end_span) -->
         </div>
     </footer>
 
-    <!-- Floating WhatsApp CTA -->
     <a href="https://wa.me/6289530104144?text=Halo%20Fandy%20Mukty%20Decoration,%20saya%20ingin%20konsultasi%20mengenai%20paket%20pernikahan." class="floating-wa" target="_blank" rel="noopener">
         Konsultasi via WA
     </a>
+    <!--[span_11](start_span)[span_11](end_span) -->
 
+    <!-- Vanilla JS untuk Tab Filter Ringan -->
+    <script>
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filter-item");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                if (x[i].className.indexOf(c) > -1) {
+                    x[i].style.display = "block";
+                }
+            }
+            // Update active tab style
+            var btns = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+            event.currentTarget.classList.add("active");
+        }
+        // Tampilkan semua secara default
+        filterSelection('all');
+    </script>
 </body>
 </html>
