@@ -1,0 +1,194 @@
+/* Variabel Desain (Berdasarkan Ekstraksi Warna Logo) */
+:root {
+    --gold-primary: #C5A059; /* Diambil dari aksen emas FM */
+    --gold-dark: #A6833D;
+    --dark-bg: #111111;
+    --light-bg: #FAFAFA;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background-color: var(--light-bg);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Navigasi (Mobile First) */
+.navbar {
+    background: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-wrapper {
+    display: flex;
+    flex-direction: column; /* Ponsel: Logo di atas, link di bawah */
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo {
+    height: 60px;
+    object-fit: contain;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 60px 0;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff, #f4f0ea);
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+    color: var(--gold-primary);
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--gold-primary);
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+/* Layanan (Mobile First: 1 Kolom) */
+.services-section {
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+}
+
+.grid-services {
+    display: flex;
+    flex-direction: column; /* Tumpuk ke bawah di ponsel */
+    gap: 20px;
+}
+
+.service-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    text-align: center;
+    border-top: 4px solid var(--gold-primary);
+}
+
+.service-card h3 {
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
+}
+
+/* Footer & Logo Gelap */
+.footer-section {
+    background-color: var(--dark-bg);
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-logo {
+    height: 80px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+/* Floating WhatsApp Button */
+.floating-wa {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+/* --- OPTIMASI DESKTOP (Media Queries) --- */
+@media (min-width: 768px) {
+    /* Desktop: Logo di kiri, link di kanan */
+    .nav-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    /* Desktop: Teks lebih besar */
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+    }
+    .hero-section {
+        padding: 100px 0;
+    }
+    
+    /* Desktop: Kartu layanan sejajar 3 kolom */
+    .grid-services {
+        flex-direction: row;
+    }
+    .service-card {
+        flex: 1; /* Membagi ruang sama rata */
+    }
+}
