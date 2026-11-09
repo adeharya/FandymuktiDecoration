@@ -6,7 +6,7 @@
   const backToTop = document.querySelector('.back-to-top');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Load the asset-specific layout and use the provided black-background brand mark.
+  // Brand asset requested for the top-left header logo.
   const assetStyles = document.createElement('link');
   assetStyles.rel = 'stylesheet';
   assetStyles.href = 'portfolio-assets.css';
@@ -14,7 +14,7 @@
   document.querySelectorAll('.brand').forEach((brand) => {
     const logo = document.createElement('img');
     logo.className = 'brand-logo-image';
-    logo.src = 'file_000000009af08211b5ac8842f092bac6.png';
+    logo.src = '1000038108.jpg';
     logo.alt = '';
     logo.width = 220;
     logo.height = 72;
@@ -23,13 +23,42 @@
     brand.setAttribute('aria-label', 'Fandy Mukty Decoration, beranda');
   });
 
-  // Add only image files that are present in the repository; lightbox indexing
-  // is assigned below after these cards have been appended.
+  // Elegant announcement marquee in the fixed top header.
+  const ticker = document.createElement('div');
+  ticker.className = 'brand-ticker';
+  ticker.setAttribute('aria-label', 'FM Decoration berpengalaman lebih dari 20 tahun, melayani dengan hati dan menyentuh dengan tulus');
+  const tickerTrack = document.createElement('div');
+  tickerTrack.className = 'brand-ticker-track';
+  const tickerCopy = 'FM Decoration berpengalaman lebih dari 20 tahun · melayani dengan hati dan menyentuh dengan tulus';
+  for (let index = 0; index < 4; index += 1) {
+    const item = document.createElement('span');
+    item.className = 'brand-ticker-item';
+    item.textContent = tickerCopy;
+    if (index > 0) item.setAttribute('aria-hidden', 'true');
+    tickerTrack.append(item);
+  }
+  ticker.append(tickerTrack);
+  header.prepend(ticker);
+  const tickerStyle = document.createElement('style');
+  tickerStyle.textContent = `
+    .brand-ticker{height:30px;overflow:hidden;display:flex;align-items:center;background:#171713;color:#dfc995;border-bottom:1px solid #b49a6a55;position:relative;z-index:2}
+    .brand-ticker-track{width:max-content;display:flex;align-items:center;animation:brand-marquee 34s linear infinite}
+    .brand-ticker:hover .brand-ticker-track{animation-play-state:paused}
+    .brand-ticker-item{flex:none;padding:0 36px;font:500 8px/1.2 var(--sans,Arial,sans-serif);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+    .brand-ticker-item:after{content:'✦';color:#f0e5c9;margin-left:72px;font-size:9px}
+    @keyframes brand-marquee{to{transform:translateX(-50%)}}
+    .navbar{height:88px}
+    @media(max-width:680px){.brand-ticker{height:27px}.brand-ticker-item{font-size:7px;padding-inline:24px}.brand-ticker-item:after{margin-left:44px}.navbar{height:72px}}
+    @media(prefers-reduced-motion:reduce){.brand-ticker-track{animation:none;justify-content:center;width:100%}.brand-ticker-item:not(:first-child){display:none}.brand-ticker-item{padding-inline:12px;white-space:normal;text-align:center}}
+  `;
+  document.head.append(tickerStyle);
+
+  // Add repository portfolio assets and keep them available to the lightbox.
   const gallery = document.querySelector('.gallery-editorial');
   const extraImages = [
-    { src: '20260911_230639.jpg', alt: 'Foto dekorasi pernikahan dari koleksi visual Fandy Mukty Decoration', label: '03 / A CELEBRATION IN BLOOM' },
-    { src: '1794226408848.jpg', alt: 'Inspirasi dekorasi pernikahan dari aset visual yang dibagikan', label: '04 / DETAILS & ATMOSPHERE' },
-    { src: '1789961566895.png', alt: 'Papan inspirasi desain dekorasi pernikahan', label: '05 / DESIGN INSPIRATION' }
+    { src: '20260911_230639.jpg', alt: 'Dekorasi pelaminan dengan tirai dan rangkaian bunga warna-warni', label: '03 / A CELEBRATION IN BLOOM' },
+    { src: '1794226408848.jpg', alt: 'Referensi visual dekorasi pernikahan dari koleksi Fandy Mukty Decoration', label: '04 / DETAILS & ATMOSPHERE' },
+    { src: '1789961566895.png', alt: 'Papan inspirasi konsep dekorasi pernikahan elegan', label: '05 / DESIGN INSPIRATION' }
   ];
   extraImages.forEach((asset, index) => {
     const item = document.createElement('button');
