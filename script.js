@@ -6,6 +6,52 @@
   const backToTop = document.querySelector('.back-to-top');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Load the asset-specific layout and use the provided black-background brand mark.
+  const assetStyles = document.createElement('link');
+  assetStyles.rel = 'stylesheet';
+  assetStyles.href = 'portfolio-assets.css';
+  document.head.append(assetStyles);
+  document.querySelectorAll('.brand').forEach((brand) => {
+    const logo = document.createElement('img');
+    logo.className = 'brand-logo-image';
+    logo.src = 'file_000000009af08211b5ac8842f092bac6.png';
+    logo.alt = '';
+    logo.width = 220;
+    logo.height = 72;
+    logo.decoding = 'async';
+    brand.replaceChildren(logo);
+    brand.setAttribute('aria-label', 'Fandy Mukty Decoration, beranda');
+  });
+
+  // Add only image files that are present in the repository; lightbox indexing
+  // is assigned below after these cards have been appended.
+  const gallery = document.querySelector('.gallery-editorial');
+  const extraImages = [
+    { src: '20260911_230639.jpg', alt: 'Foto dekorasi pernikahan dari koleksi visual Fandy Mukty Decoration', label: '03 / A CELEBRATION IN BLOOM' },
+    { src: '1794226408848.jpg', alt: 'Inspirasi dekorasi pernikahan dari aset visual yang dibagikan', label: '04 / DETAILS & ATMOSPHERE' },
+    { src: '1789961566895.png', alt: 'Papan inspirasi desain dekorasi pernikahan', label: '05 / DESIGN INSPIRATION' }
+  ];
+  extraImages.forEach((asset, index) => {
+    const item = document.createElement('button');
+    item.className = `gallery-item gallery-extra gallery-extra-${index + 1} reveal`;
+    item.type = 'button';
+    item.setAttribute('aria-label', `Perbesar foto portofolio: ${asset.label}`);
+    const image = document.createElement('img');
+    image.src = asset.src;
+    image.alt = asset.alt;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    const label = document.createElement('span');
+    label.className = 'gallery-label';
+    label.textContent = asset.label;
+    const open = document.createElement('span');
+    open.className = 'gallery-open';
+    open.setAttribute('aria-hidden', 'true');
+    open.textContent = '↗';
+    item.append(image, label, open);
+    gallery.append(item);
+  });
+
   const updateScrollUI = () => {
     const scrolled = window.scrollY > 24;
     header.classList.toggle('scrolled', scrolled);
@@ -82,7 +128,8 @@
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'instant' : 'smooth' }));
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  const galleryItems = [...document.querySelectorAll('[data-lightbox]')];
+  const galleryItems = [...document.querySelectorAll('[data-lightbox]'), ...document.querySelectorAll('.gallery-extra')];
+  galleryItems.forEach((item, index) => item.dataset.lightbox = String(index));
   const lightbox = document.querySelector('.lightbox');
   const lightboxImage = lightbox.querySelector('figure img');
   const lightboxCaption = lightbox.querySelector('figcaption');
